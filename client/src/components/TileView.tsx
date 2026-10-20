@@ -141,8 +141,11 @@ export const TileView: React.FC<TileViewProps> = ({
       </div>
 
       {/* Primary Landmark Title Display */}
-      <div className="flex-1 min-h-0 flex items-center justify-center py-0.5 px-0.5">
-        <p className="text-[9.5px] sm:text-[11px] md:text-[12.5px] font-black text-slate-900 dark:text-slate-50 text-center leading-[1.15] tracking-tight line-clamp-2 drop-shadow-sm">
+      <div className="flex-1 min-h-0 flex items-center justify-center py-1 px-1 my-0.5 rounded-lg bg-slate-950/40 dark:bg-slate-950/60 border border-white/5 shadow-inner">
+        <p
+          className="text-[10px] sm:text-[11.5px] md:text-[13px] font-black text-center leading-[1.15] tracking-tight line-clamp-2 drop-shadow-md"
+          style={{ color: 'var(--text-primary, #ffffff)' }}
+        >
           {tile.name}
         </p>
       </div>
