@@ -243,6 +243,7 @@ export class GameStateManager {
       activeEventCard: instance.activeEventCard,
       recentLedger: instance.ledger.slice(-20),
       lastActionMessage: instance.lastActionMessage,
+      standings: instance.standings ?? null,
     };
   }
 

@@ -136,57 +136,50 @@ export const TileView: React.FC<TileViewProps> = ({
           </div>
         )}
 
-        {/* Landmark Name Banner inside photo */}
-        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/75 to-transparent px-1 py-0.5 pointer-events-none text-center">
-          <p className="text-[8px] md:text-[9.5px] font-black text-white leading-tight drop-shadow truncate tracking-tight">
-            {tile.name}
-          </p>
-        </div>
+        {/* Soft bottom vignette for contrast */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
       </div>
 
-      {/* Tile Title & Subtitle in block */}
-      <div className="flex-1 min-h-0 flex flex-col justify-start leading-tight py-0.5">
-        <p className="text-[8.5px] md:text-[10px] font-black text-slate-800 dark:text-slate-100 truncate text-center">
+      {/* Primary Landmark Title Display */}
+      <div className="flex-1 min-h-0 flex items-center justify-center py-0.5 px-0.5">
+        <p className="text-[9.5px] sm:text-[11px] md:text-[12.5px] font-black text-slate-900 dark:text-slate-50 text-center leading-[1.15] tracking-tight line-clamp-2 drop-shadow-sm">
           {tile.name}
-        </p>
-        <p className="text-[6.5px] md:text-[7.5px] text-slate-500 dark:text-slate-400 truncate text-center italic">
-          {visual.tagline}
         </p>
       </div>
 
       {/* Footer Pill: Price / Rent / Ownership Status */}
-      <div className="flex items-center justify-between mt-auto pt-0.5 shrink-0 text-[8px] md:text-[9px]">
+      <div className="flex items-center justify-between mt-auto pt-0.5 shrink-0 text-[8.5px] sm:text-[9.5px] md:text-[10px]">
         {isOwned ? (
-          <div className="flex items-center gap-0.5 font-bold text-emerald-600 dark:text-emerald-400">
-            <span className="text-[7px] md:text-[8px] uppercase opacity-75">Rent:</span>
-            <span className="font-mono font-bold">
+          <div className="flex items-center gap-0.5 font-black text-emerald-600 dark:text-emerald-400">
+            <span className="text-[7.5px] sm:text-[8.5px] uppercase opacity-75">Rent:</span>
+            <span className="font-mono font-black">
               {Math.floor(
                 (tile.baseRent ?? 0) * (BUILDING_CONFIG[buildingLevel]?.multiplier ?? 1)
               )}c
             </span>
           </div>
         ) : tile.price ? (
-          <div className="flex items-center gap-0.5 font-bold text-amber-500 dark:text-amber-300">
-            <span className="text-[7px] md:text-[8px] uppercase opacity-75">Buy:</span>
-            <span className="font-mono font-bold">{tile.price}c</span>
+          <div className="flex items-center gap-0.5 font-black text-amber-500 dark:text-amber-400">
+            <span className="text-[7.5px] sm:text-[8.5px] uppercase opacity-75">Buy:</span>
+            <span className="font-mono font-black">{tile.price}c</span>
           </div>
         ) : (
-          <span className="font-semibold text-slate-400 text-[8px] uppercase">{tile.type}</span>
+          <span className="font-black text-slate-400 text-[8px] sm:text-[9px] uppercase">{tile.type}</span>
         )}
 
         {/* Ownership Status Pill */}
         {isOwned ? (
           <span
-            className={`text-[7px] md:text-[8px] font-black px-1.5 py-0.5 rounded-full ${
+            className={`text-[7.5px] sm:text-[8.5px] font-black px-1.5 py-0.5 rounded-full ${
               isMe
                 ? 'bg-amber-500/20 text-amber-500 dark:text-amber-400 border border-amber-500/30'
                 : 'bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30'
             }`}
           >
-            {isMe ? 'OWNED' : 'BOUGHT'}
+            {isMe ? 'YOU' : 'OWNED'}
           </span>
         ) : (
-          <span className="text-[7px] text-slate-400 uppercase font-semibold">FREE</span>
+          <span className="text-[7.5px] sm:text-[8.5px] text-slate-400 uppercase font-black">FREE</span>
         )}
       </div>
 

@@ -26,8 +26,8 @@ export const BoardView: React.FC = () => {
   if (!snapshot) return null;
 
   return (
-    <div className="w-full max-w-[min(96vw,calc(100vh-85px))] aspect-square mx-auto p-1 md:p-2 flex items-center justify-center transition-all">
-      <div className="board-grid w-full h-full neu-flat-lg rounded-2xl md:rounded-3xl p-1.5 md:p-2.5 relative overflow-hidden transition-all duration-300 gap-1 md:gap-1.5">
+    <div className="w-full max-w-[min(98vw,calc(100vh-78px))] aspect-square mx-auto p-1 md:p-1.5 flex items-center justify-center transition-all">
+      <div className="board-grid w-full h-full neu-flat-lg rounded-2xl md:rounded-3xl p-1 md:p-2 relative overflow-hidden transition-all duration-300 gap-1 md:gap-1.5">
         {/* Render 40 perimeter photo card tiles */}
         {BOARD_TILES.map((tile: BoardTile) => {
           const { col, row } = getTileGridPosition(tile.index);

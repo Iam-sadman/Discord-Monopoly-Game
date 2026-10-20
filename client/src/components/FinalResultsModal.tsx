@@ -22,7 +22,7 @@ export const FinalResultsModal: React.FC = () => {
 
   if (!isFinished || !snapshot) return null;
 
-  const standings = (snapshot as any).standings || {
+  const standings = snapshot.standings || {
     winnerUserId: null,
     rankings: [],
     isTie: false,
@@ -32,6 +32,7 @@ export const FinalResultsModal: React.FC = () => {
   const winner = standings.winnerUserId
     ? snapshot.players.find((p) => p.userId === standings.winnerUserId)
     : null;
+  const winnerDisplayName = winner?.username || rankings[0]?.username || 'Winner';
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md overflow-y-auto">
@@ -46,7 +47,7 @@ export const FinalResultsModal: React.FC = () => {
         </div>
 
         <h2 className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 tracking-tight mb-2">
-          {standings.isTie ? 'Shared Victory! (Tie Game)' : `${winner?.username || 'Winner'} Triumphs!`}
+          {standings.isTie ? 'Shared Victory! (Tie Game)' : `${winnerDisplayName} Triumphs!`}
         </h2>
         <p className="text-slate-500 dark:text-slate-400 text-xs md:text-sm mb-6 font-medium">
           30-minute match deadline reached. Final standings calculated by Net Worth.

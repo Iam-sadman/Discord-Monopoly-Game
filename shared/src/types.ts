@@ -231,4 +231,5 @@ export interface GameSnapshot {
   activeEventCard?: ActiveEventCard | null;
   recentLedger: LedgerEntry[];
   lastActionMessage?: string;
+  standings?: GameStandings | null;
 }
