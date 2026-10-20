@@ -1,4 +1,4 @@
-wexport interface TileVisualInfo {
+export interface TileVisualInfo {
   imageUrl: string;
   tagline: string;
   emoji: string;
