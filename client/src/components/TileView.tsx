@@ -83,7 +83,7 @@ export const TileView: React.FC<TileViewProps> = ({
       )}
 
       {/* Photo & Landmark Name Card Container */}
-      <div className="relative w-full flex-1 min-h-[50px] rounded-lg md:rounded-xl overflow-hidden mb-1 bg-slate-800/80 shadow-inner flex flex-col justify-end">
+      <div className="relative w-full flex-1 min-h-[50px] rounded-lg md:rounded-xl overflow-hidden mb-1 bg-slate-800/80 shadow-inner flex items-center justify-center">
         {!imgError ? (
           <img
             src={visual.imageUrl}
@@ -101,12 +101,12 @@ export const TileView: React.FC<TileViewProps> = ({
           </div>
         )}
 
-        {/* Ambient bottom vignette so text pops */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10 pointer-events-none" />
+        {/* Ambient subtle vignette */}
+        <div className="absolute inset-0 bg-black/25 pointer-events-none" />
 
         {/* Ownership Badge on Photo (Top-Left) */}
         {isOwned && (
-          <div className="absolute top-1 left-1 z-10 flex items-center">
+          <div className="absolute top-1 left-1 z-20 flex items-center">
             {isMe ? (
               <span className="text-[7px] md:text-[8px] font-black uppercase tracking-tight bg-amber-500 text-slate-950 px-1.5 py-0.5 rounded shadow flex items-center gap-0.5">
                 👑 YOU
@@ -121,7 +121,7 @@ export const TileView: React.FC<TileViewProps> = ({
 
         {/* Building Level Badge on Photo (Top-Right) */}
         {isUpgradable && buildingLevel > 0 && (
-          <div className="absolute top-1 right-1 z-10 flex items-center">
+          <div className="absolute top-1 right-1 z-20 flex items-center">
             {buildingLevel < 4 ? (
               <span className="text-[7px] md:text-[8px] font-black bg-emerald-800/95 text-emerald-200 border border-emerald-400/40 px-1.5 py-0.5 rounded shadow flex items-center gap-0.5">
                 <Home className="w-2.5 h-2.5 fill-current text-emerald-300" />
@@ -136,9 +136,9 @@ export const TileView: React.FC<TileViewProps> = ({
           </div>
         )}
 
-        {/* Landmark Title Badge inside the Image Block */}
-        <div className="relative z-10 mx-1 mb-1 p-1 rounded-md bg-slate-950/85 backdrop-blur-md border border-white/10 shadow-lg text-center">
-          <p className="text-[9.5px] sm:text-[11px] md:text-[12px] font-black text-white leading-tight tracking-tight line-clamp-2 drop-shadow-md">
+        {/* Landmark Title Badge centered in the Middle with 20% opacity */}
+        <div className="relative z-10 w-[92%] mx-auto px-1.5 py-1 rounded-md bg-black/20 backdrop-blur-[2px] border border-white/20 shadow-md text-center flex items-center justify-center">
+          <p className="text-[9.5px] sm:text-[11px] md:text-[12px] font-black text-white leading-tight tracking-tight line-clamp-2 drop-shadow-[0_1.5px_2px_rgba(0,0,0,0.95)]">
             {tile.name}
           </p>
         </div>
