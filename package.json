@@ -1,0 +1,30 @@
+{
+  "name": "block-party-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Block Party - Real-time multiplayer Bangladesh-themed real-estate strategy board game for Discord Activities",
+  "workspaces": [
+    "shared",
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "start": "node server/dist/index.js",
+    "test": "npm run test --workspace=server",
+    "test:watch": "npm run test:watch --workspace=server",
+    "build:shared": "npm run build --workspace=shared",
+    "build:server": "npm run build --workspace=server",
+    "build:client": "npm run build --workspace=client",
+    "build": "npm run build:shared && npm run build:server && npm run build:client",
+    "dev:server": "npm run dev --workspace=server",
+    "dev:client": "npm run dev --workspace=client",
+    "dev": "npm run dev --workspace=server"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true,
+    "esbuild@0.25.12": true
+  }
+}
