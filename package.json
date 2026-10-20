@@ -23,6 +23,9 @@
   "devDependencies": {
     "typescript": "^5.7.3"
   },
+  "overrides": {
+    "tailwindcss": "3.4.17"
+  },
   "allowScripts": {
     "esbuild@0.28.2": true,
     "esbuild@0.25.12": true
