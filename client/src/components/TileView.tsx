@@ -82,27 +82,27 @@ export const TileView: React.FC<TileViewProps> = ({
         />
       )}
 
-      {/* Miniature Photo Card Container */}
-      <div className="relative w-full aspect-[4/3] rounded-lg md:rounded-xl overflow-hidden mb-1 shrink-0 bg-slate-800/80 shadow-inner">
+      {/* Photo & Landmark Name Card Container */}
+      <div className="relative w-full flex-1 min-h-[50px] rounded-lg md:rounded-xl overflow-hidden mb-1 bg-slate-800/80 shadow-inner flex flex-col justify-end">
         {!imgError ? (
           <img
             src={visual.imageUrl}
             alt={tile.name}
             onError={() => setImgError(true)}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+            className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
             loading="lazy"
           />
         ) : (
           <div
-            className="w-full h-full flex items-center justify-center text-xl"
+            className="absolute inset-0 w-full h-full flex items-center justify-center text-xl"
             style={{ backgroundColor: `${visual.accentColor}25` }}
           >
             <span>{visual.emoji}</span>
           </div>
         )}
 
-        {/* Soft bottom vignette for contrast */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+        {/* Ambient bottom vignette so text pops */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10 pointer-events-none" />
 
         {/* Ownership Badge on Photo (Top-Left) */}
         {isOwned && (
@@ -136,18 +136,12 @@ export const TileView: React.FC<TileViewProps> = ({
           </div>
         )}
 
-        {/* Soft bottom vignette for contrast */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
-      </div>
-
-      {/* Primary Landmark Title Display */}
-      <div className="flex-1 min-h-0 flex items-center justify-center py-1 px-1 my-0.5 rounded-lg bg-slate-950/40 dark:bg-slate-950/60 border border-white/5 shadow-inner">
-        <p
-          className="text-[10px] sm:text-[11.5px] md:text-[13px] font-black text-center leading-[1.15] tracking-tight line-clamp-2 drop-shadow-md"
-          style={{ color: 'var(--text-primary, #ffffff)' }}
-        >
-          {tile.name}
-        </p>
+        {/* Landmark Title Badge inside the Image Block */}
+        <div className="relative z-10 mx-1 mb-1 p-1 rounded-md bg-slate-950/85 backdrop-blur-md border border-white/10 shadow-lg text-center">
+          <p className="text-[9.5px] sm:text-[11px] md:text-[12px] font-black text-white leading-tight tracking-tight line-clamp-2 drop-shadow-md">
+            {tile.name}
+          </p>
+        </div>
       </div>
 
       {/* Footer Pill: Price / Rent / Ownership Status */}
